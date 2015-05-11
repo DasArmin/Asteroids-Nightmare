@@ -1,2 +1,2 @@
-# Asteroids
-School project
+# Astroids
+Astroids AS3 game

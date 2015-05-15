@@ -62,12 +62,13 @@ package
 			{
 				child.x = 130 + Math.floor(Math.random() * (1790 - 130));
 				child.y = 150 + Math.floor(Math.random() * (930 - 150));
-				
+				/*
 				if (child.hitTestObject(child))
 				{
 					child.x = 130 + Math.floor(Math.random() * (1790 - 130));
 					child.y = 150 + Math.floor(Math.random() * (930 - 150));
 				}
+				*/
 			}
 			
 			
@@ -111,6 +112,19 @@ package
 					{
 						mist_vec[i].x = 1920;
 					}
+				}
+			}
+			
+			for each( var child:TreeAsset in tree_vec) 
+			{
+				if (!child.hitTestObject(child))
+				{
+					trace("Alles is goed");
+				}
+				else {
+					trace("ERROR HELP");
+					child.x = 130 + Math.floor(Math.random() * (1790 - 130));
+					child.y = 150 + Math.floor(Math.random() * (930 - 150));
 				}
 			}
 		}

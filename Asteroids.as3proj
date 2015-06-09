@@ -54,6 +54,7 @@
   <libraryPaths>
     <element path="lib\BackgroundArt.swc" />
     <element path="lib\MistArt.swc" />
+    <element path="lib\Assets3.swc" />
     <element path="lib\Assets.swc" />
   </libraryPaths>
   <!-- External Libraries -->
@@ -70,7 +71,7 @@
   </intrinsics>
   <!-- Assets to embed into the output SWF -->
   <library>
-    <!-- example: <asset path="..." id="..." update="..." glyphs="..." mode="..." place="..." sharepoint="..." /> -->
+    <asset path="lib\Character_Throw+Die_Scène 1.swf" />
   </library>
   <!-- Class files to compile (other referenced classes will automatically be included) -->
   <compileTargets>

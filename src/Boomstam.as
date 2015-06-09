@@ -5,7 +5,7 @@ package
 	 * ...
 	 * @author Armin Karimi Birgani
 	 */
-	public class Boomstam extends MovieClip
+	public class Boomstam extends GameObject
 	{
 		private var boomstam:BoomstamAsset;
 		

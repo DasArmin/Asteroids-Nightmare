@@ -5,7 +5,7 @@ package
 	 * ...
 	 * @author Armin Karimi Birgani
 	 */
-	public class Bush extends MovieClip
+	public class Bush extends GameObject
 	{
 		private var bush:BushAsset;
 		

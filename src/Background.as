@@ -15,21 +15,31 @@ package
 		private var background_Art:EnvironmentAsset;
 		
 		//Level
+		/*
+			0 = Nothing
+			1 = Player
+			2 = Tree
+			3 = Boomstam
+			4 = Bush
+			5 = Molshoop
+			6 = Orb
+		*/
 		private var level = [
-			[2, 4, 0, 0, 2, 0, 0, 0, 0, 0],
-			[0, 0, 0, 0, 0, 0, 0, 4, 0, 0],
-			[4, 0, 1, 0, 4, 0, 0, 0, 0, 3],
 			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			[0, 4, 0, 0, 0, 0, 0, 4, 0, 0],
+			[4, 0, 2, 0, 4, 0, 0, 0, 0, 3],
+			[0, 2, 5, 0, 0, 0, 0, 0, 2, 0],
 			[0, 0, 0, 0, 3, 0, 0, 0, 0, 0],
-			[2, 0, 0, 0, 2, 0, 0, 0, 4, 0],
+			[0, 4, 0, 0, 2, 0, 1, 0, 4, 0],
 			[0, 0, 2, 0, 0, 0, 0, 0, 0, 0],
 			[4, 0, 0, 0, 0, 2, 0, 0, 0, 3],
-			[0, 2, 0, 0, 0, 0, 0, 0, 0, 0],
-			[2, 0, 4, 0, 3, 0, 0, 0, 0, 0],
+			[0, 2, 0, 6, 0, 0, 0, 0, 6, 0],
+			[4, 0, 0, 0, 3, 0, 0, 0, 0, 0],
 		];
 		
 		//Other
 		private var mist_vec:Vector.<MovieClip>;
+		private var levelObject:DisplayObject;
 		
 		public function Background() 
 		{
@@ -46,54 +56,59 @@ package
 			background_Art = new EnvironmentAsset();
 			addChild(background_Art);
 			
-			//Level loop
-			/*
-			0 = 
-			1 = 
-			2 = 
-			3 = 
-			4 =
-			*/
+			//Level loops
 			for (var x:Number = 0; x < level[0].length; x++)
             {
                 for (var y:Number = 0; y < level[0].length; y++)
                 {
                         if (level[y][x] == 1)
                         {
-							var character:Character = new Character();
-                            
-							character.x = 1920 / level[0].length * x;
-                            character.y = 1080 / level.length * y;
+							levelObject = stage.addChild(new Player());
 							
-							stage.addChild(character);
+							levelObject.x = 1920 / level[0].length * x;
+                            levelObject.y = 1080 / level.length * y;
+							
+							Main.colissionObjects.push(levelObject);
+							Main.updateFrame.push(levelObject);
 						}
 						else if (level[y][x] == 2)
 						{
-							var tree:Tree = new Tree();
+							levelObject = stage.addChild(new Tree());
                             
-							tree.x = 1920 / level[0].length * x;
-                            tree.y = 1080 / level.length * y;
+							levelObject.x = 1920 / level[0].length * x;
+                            levelObject.y = 1080 / level.length * y;
 							
-							stage.addChild(tree);
+							//Main.colissionObjects.push(levelObject);
 						}
 						else if (level[y][x] == 3)
 						{
-							var boomstam:Boomstam = new Boomstam();
-							
-							boomstam.x = 1920 / level[0].length * x;
-                            boomstam.y = 1080 / level.length * y;
-							
-							stage.addChild(boomstam);
+							levelObject = stage.addChild(new Boomstam());
+                            
+							levelObject.x = 1920 / level[0].length * x;
+                            levelObject.y = 1080 / level.length * y;
 						}
 						else if (level[y][x] == 4)
 						{
-							var bush:Bush = new Bush();
-							
-							bush.x = 1920 / level[0].length * x;
-                            bush.y = 1080 / level.length * y;
-							
-							stage.addChild(bush);
+							levelObject = stage.addChild(new Bush());
+                            
+							levelObject.x = 1920 / level[0].length * x;
+                            levelObject.y = 1080 / level.length * y;
 						}
+						else if (level[y][x] == 5)
+						{
+							levelObject = stage.addChild(new Portal());
+                            
+							levelObject.x = 1920 / level[0].length * x;
+                            levelObject.y = 1080 / level.length * y;
+						}
+						else if (level[y][x] == 6)
+						{
+							levelObject = stage.addChild(new Orb());
+                            
+							levelObject.x = 1920 / level[0].length * x;
+                            levelObject.y = 1080 / level.length * y;
+						}
+						
 				}
             }
 			

@@ -46,14 +46,27 @@ package
 		static public var currentLevel:int = 0;
 		static public var levels:Array = [
 			[//Level 1
-				[6,0,0,1,0,0,0,1,0],
-				[0,1,0,0,0,0,0,0,0],
-				[5,0,0,3,1,0,4,0,5],
-				[0,0,2,0,0,0,0,1,0],
-				[0,0,0,5,0,0,0,0,0],
-				[0,4,0,1,3,0,0,3,0],
-				[0,2,0,2,0,0,0,0,0],
-				[1,0,5,0,1,0,0,5,0],
+				[6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 9, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 9, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,], 
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 8, 9, 9, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 9, 0, 8, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 9, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+				[0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 8, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+				[1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 8, 9, 9, 9, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+				[0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 9, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 7, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+				[0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+				[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 8, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,],
+				
 			],
 			[//Menu
 				[7,0,0,0,0,1,0,0,0],
@@ -77,6 +90,7 @@ package
 		static private var sceneObject:GameObject;
 		static private var stageObject:DisplayObject;
 		static public var portals:Vector.<Portal> = new Vector.<Portal>;
+		private var mist_vec:Vector.<MovieClip>;
 		
 		//test background
 		private var bg:EnvironmentAsset;
@@ -102,6 +116,16 @@ package
 			//test background
 			bg = new EnvironmentAsset();
 			addChild(bg);
+			
+			mist_vec = new Vector.<MovieClip>;
+			
+			for (var i:int = 0; i < 4; i++)
+			{
+				mist_vec.push(new Mistbank2Asset);
+				addChild(mist_vec[i]);
+			}
+			mist_vec[2].x = -1920;
+			mist_vec[3].x = 1920;
 		}
 		
 		
@@ -189,6 +213,36 @@ package
 							updateFrame.push(stageObject);
 							colissionObjects.push(stageObject);
 							break;
+						case 7:
+							sceneObject = new RiverBlockSmall();
+							sceneObject.x = (1920 / levels[scene][0].length) * x;
+							sceneObject.y = (1080 / levels[scene].length) * y;
+							//sceneObject.width = sceneObject.height = 600 / levels[scene].length;
+							
+							stageObject = stage.addChild(sceneObject);
+							//updateFrame.push(stageObject);
+							colissionObjects.push(stageObject);
+							break;
+						case 8:
+							sceneObject = new RiverBlockMedium();
+							sceneObject.x = (1920 / levels[scene][0].length) * x;
+							sceneObject.y = (1080 / levels[scene].length) * y;
+							//sceneObject.width = sceneObject.height = 600 / levels[scene].length;
+							
+							stageObject = stage.addChild(sceneObject);
+							//updateFrame.push(stageObject);
+							colissionObjects.push(stageObject);
+							break;
+						case 9:
+							sceneObject = new RiverBlockBig();
+							sceneObject.x = (1920 / levels[scene][0].length) * x;
+							sceneObject.y = (1080 / levels[scene].length) * y;
+							//sceneObject.width = sceneObject.height = 600 / levels[scene].length;
+							
+							stageObject = stage.addChild(sceneObject);
+							//updateFrame.push(stageObject);
+							colissionObjects.push(stageObject);
+							break;
 					}
 				}
 			}
@@ -238,6 +292,30 @@ package
 			
 			for (input in inputClick)
 				inputClick[input] = false;
+				
+			//Move mist
+			for (var i:int = 0; i <= mist_vec.length -1; i++)
+			{
+				//Switch turning true and false
+				//Move right
+				if (i % 2) //False
+				{
+					mist_vec[i].x += 1;
+					if (mist_vec[i].x >= mist_vec[i].width)
+					{
+						mist_vec[i].x = -mist_vec[i].width;
+					}
+				}
+				//Move left
+				else //True
+				{
+					mist_vec[i].x -= 2;
+					if (mist_vec[i].x <= -mist_vec[i].width)
+					{
+						mist_vec[i].x = 1920;
+					}
+				}
+			}
 		}
 		
 		

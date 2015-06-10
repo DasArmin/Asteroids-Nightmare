@@ -12,7 +12,7 @@ package
 		
 		public function Kogel() 
 		{
-			addChild(new Bullet());
+			addChild(new Bulletfade());
 			speedDividor = 150;
 			collisionType = "circle";
 			moveSpeed = 10;

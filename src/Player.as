@@ -17,17 +17,19 @@ package
 		public var hiding = false;
 		private var frameCount:Number = 0;
 		
+		private var klein:Boolean = false;
+		
 		private var animations = [
 			[//Groot
 				[//Idle
-					new CharacterIdleBack,
-					new IdleFront,
-					new IdleSide
+					new CharIdle0,
+					new CharIdle180,
+					new CharIdle90
 				],
 				[//Run
-					new Character_Walk_Back,
-					new Character_Walk_Front,
-					new Character_Walk_Side
+					new CharWalk0,
+					new CharWalk180,
+					new CharWalk270
 				],
 				[//Die
 					new Character0_Die,
@@ -37,13 +39,13 @@ package
 				],
 				[//Throw
 					new Character0_Throw,
-					new Character90_Throw,
+					//new Character90_Throw,
 					new Character180_Throw,
 					new Character270_Throw
 				],
 				[//Swap
 					new Character180_Swap,
-					new Character0_Swap,
+					//new Character0_Swap,
 					new Character270_Swap,
 					new Character90_Swap
 					
@@ -82,7 +84,7 @@ package
 		{			
 			y = 400;
 			
-			addChild(new CharacterIdleBack);
+			addChild(new CharIdle0);
 			
 			name = "Player";
 			
@@ -98,18 +100,18 @@ package
 			currentAnimation = animations[currentSize][currentAnimationType][currentRotation];
 		}
 		
+		public override function collidingWith(collideObject:GameObject):Boolean {
+			
+			if (collideObject is Portal && currentSize == 1)
+				frameCount = 30;
+			
+			return super.collidingWith(collideObject);
+		}
+		
 		public override function onEnterFrame():void 
 		{
 			super.onEnterFrame();
 			
-			frameCount++;
-			/*
-			if ( frameCount > 100)
-			{
-				frameCount = 0;
-				
-			}
-			*/
 			if (Main.inputDown["d"]) {
 				
 				this.moveDirection.x += 1;
@@ -136,26 +138,27 @@ package
 				stage.addChild(bullet);
 			}
 			
-			if (Main.inputClick["e"]) {
-				
+			trace(frameCount);
+			
+			if (Main.inputDown["e"] && currentSize == 0) {
+				frameCount = 0;
 				currentSize = 1; //klein
 				currentAnimationType = 0; //Walk
 				currentRotation = 0;
 				setAnimation();
 			}
 			
-			frameCount += 0.5;
 			
-			if (frameCount >= 1 && currentSize == 1)
+			
+			if (frameCount > 30 && currentSize == 1)
 			{
 				frameCount = 0;
-				this.removeChildAt(0);
-				currentAnimationType = 0;
+				currentSize = 0;
 				setAnimation();
 			}
 			
 			//trace(Main.getFaceDirection(new Point(0, 0), moveDirection));
-			
+			/*
 			if (Main.getFaceDirection(new Point(0, 0), moveDirection) != direction && currentSize == 0 ) {
 				switch (Main.getFaceDirection(new Point(0, 0), moveDirection))
 				{
@@ -184,6 +187,9 @@ package
 						break;
 				}
 			}
+			*/
+			
+			frameCount++
 		}
 		
 	}

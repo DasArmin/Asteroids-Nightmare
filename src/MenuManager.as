@@ -39,12 +39,12 @@ package
 			addChild(ThePlayButton);
 			addChild(TheHowToButton);
 			
-			//mySound.load(new URLRequest("../assets/Menu_music.mp3"));
-			//transSound.load(new URLRequest("../assets/Menuovergang.mp3"));
+			mySound.load(new URLRequest("../assets/Menu_music.mp3"));
+			transSound.load(new URLRequest("../assets/Menuovergang.mp3"));
 			if (stage) init();
 			else addEventListener(Event.ADDED_TO_STAGE, init);
 			
-			//mySound.play(0, 9999);
+			mySound.play(0, 9999);
 			
 			TheCreditsButton.addEventListener("GetTheCredits", GetCredits);
 			ThePlayButton.addEventListener("PlayTheGame", PlayGame);

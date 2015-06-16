@@ -6,12 +6,12 @@ package
 	 */
 	public class RiverBlockMedium extends GameObject
 	{
-		private var circleBlockMedium:CircleBlock;
+		//private var circleBlockMedium:CircleBlock;
 		
 		public function RiverBlockMedium() 
 		{
-			circleBlockMedium = new CircleBlock;
-			addChild(circleBlockMedium);
+			//circleBlockMedium = new CircleBlock;
+			//addChild(circleBlockMedium);
 			
 			
 			collisionType = "Circle";

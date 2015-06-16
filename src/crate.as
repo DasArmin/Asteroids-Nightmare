@@ -6,12 +6,16 @@ package
 	 */
 	public class crate extends GameObject
 	{
+		private var boxBlock:CircleBlock;
 		
 		public function crate() 
 		{
-			collisionType = "circle";
-			x = y = Math.random() * 800;
-			addChild(new CharacterMiniAsset());
+			boxBlock = new CircleBlock;
+			addChild(boxBlock);
+			
+			collisionType = "box";
+			//x = y = Math.random() * 800;
+			customWidth = 500;
 		}
 		
 	}

@@ -1,43 +1,59 @@
-package 
+package
 {
-	import flash.display.Sprite;
-	import flash.events.KeyboardEvent;
+	import flash.display.Bitmap;
 	import flash.display.MovieClip;
+	import flash.display.Sprite;
 	import flash.events.Event;
-	import flash.text.TextField;
+	import flash.media.Sound;
+	import flash.net.URLLoader;
+	import flash.net.URLRequest;
+	import flash.events.KeyboardEvent;
+	
 	/**
 	 * ...
 	 * @author Sebas
 	 */
-	public class MenuManager extends MovieClip
+	public class MenuManager extends MovieClip 
 	{
-		private var theMenu: Menu = new Menu();
-		private var secondMenu:Menu = new Menu();
-		private var thirdMenu:Menu = new Menu();
+		private var background:MenuscreenAsset = new MenuscreenAsset;
+		private var creditScreen:CreditsScreen = new CreditsScreen;
+		private var HTPScreen:HowToPlay = new HowToPlay;
+		
+		private var mySound:Sound = new Sound();
+		private var transSound:Sound = new Sound();
+		
+		private var TheCreditsButton: CreditsButton = new CreditsButton();
+		private var CreditsBackButton: BackButton = new BackButton();
+		private var ThePlayButton: PlayButton = new PlayButton();
+		private var TheHowToButton: HTPlayButton = new HTPlayButton();
 		
 		public var PlayerSelection: int = 1;
 		
+		
 		public function MenuManager() 
 		{
-			addChild(stage);
-			addChild(theMenu);
-			addChild(secondMenu);
-			addChild(thirdMenu);
+			addChild(background);
+			background.x = 857;
+			background.y = 540;
+			addChild(TheCreditsButton);
+			addChild(ThePlayButton);
+			addChild(TheHowToButton);
 			
-			theMenu.x = 950;
-			theMenu.y = 300;
-			secondMenu.x = 950;
-			secondMenu.y = 200;
-			thirdMenu.x = 950;
-			thirdMenu.y = 100;
+			//mySound.load(new URLRequest("../assets/Menu_music.mp3"));
+			//transSound.load(new URLRequest("../assets/Menuovergang.mp3"));
+			if (stage) init();
+			else addEventListener(Event.ADDED_TO_STAGE, init);
 			
-			theMenu.addEventListener("exitMenu", exitMenu);
-			secondMenu.addEventListener("exitMenu", exitMenu);
-			thirdMenu.addEventListener("exitMenu", exitMenu);
+			//mySound.play(0, 9999);
 			
-			theMenu.addEventListener("unselectEverything", unselectEvent);
-			secondMenu.addEventListener("unselectEverything", unselectEvent);
-			thirdMenu.addEventListener("unselectEverything", unselectEvent);
+			TheCreditsButton.addEventListener("GetTheCredits", GetCredits);
+			ThePlayButton.addEventListener("PlayTheGame", PlayGame);
+			TheHowToButton.addEventListener("GetHTP", GetHTP);
+			
+			TheCreditsButton.addEventListener("UnselectEverything", unselectEverything);
+			ThePlayButton.addEventListener("UnselectEverything", unselectEverything);
+			TheHowToButton.addEventListener("UnselectEverything", unselectEverything);
+			
 			
 			if (stage) init();
 			else addEventListener(Event.ADDED_TO_STAGE, init);
@@ -47,20 +63,101 @@ package
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			stage.addEventListener(KeyboardEvent.KEY_DOWN, buttonPushed);
-			// entry point
+		}
+	
+		private function GetCredits(e:Event):void
+		{
+			if (background.stage)
+			{
+			removeChild(background);
+			}
+			if (TheCreditsButton.stage)
+			{
+			removeChild(TheCreditsButton);
+			}
+			if (ThePlayButton.stage)
+			{
+			removeChild(ThePlayButton);
+			}
+			if (TheHowToButton.stage)
+			{
+				removeChild(TheHowToButton);
+			}
+			addChild(creditScreen);
+			addChild(CreditsBackButton);
+			CreditsBackButton.addEventListener("BackToMenu", ResetMenu);
+			CreditsBackButton.x = 1500;
+			CreditsBackButton.y = 800;
+			transSound.play(0, 0);
+		}
+		
+		private function ResetMenu(e:Event):void
+		{
+			transSound.play(0, 0);
+			if (CreditsBackButton.stage)
+			{
+			removeChild(CreditsBackButton);
+			}
+			if (creditScreen.stage)
+			{
+			removeChild(creditScreen);
+			}
+			if (HTPScreen.stage)
+			{
+			removeChild(HTPScreen);
+			}
+			addChild(background);
+			addChild(TheCreditsButton);
+			addChild(ThePlayButton);
+			addChild(TheHowToButton);
+		}
+		
+		private function GetHTP(e:Event):void
+		{
+			if (background.stage)
+			{
+			removeChild(background);
+			}
+			if (TheCreditsButton.stage)
+			{
+			removeChild(TheCreditsButton);
+			}
+			if (ThePlayButton.stage)
+			{
+			removeChild(ThePlayButton);
+			}
+			if (TheHowToButton.stage)
+			{
+				removeChild(TheHowToButton);
+			}
+			addChild(HTPScreen);
+			addChild(CreditsBackButton);
+			CreditsBackButton.x = 150;
+			CreditsBackButton.y = 800;
+			CreditsBackButton.addEventListener("BackToMenu", ResetMenu);
+			transSound.play(0, 0);
+		}
+		
+		private function PlayGame(e:Event):void
+		{
+			transSound.play(0, 0);
+			trace("Hier komt het spel");
 		}
 		
 		private function buttonPushed(e:KeyboardEvent):void
 		{
 			var key:uint = e.keyCode;
+			if (background.stage)
+			{
 			switch(key)
 			{
 				case 38: case 87: case 98:
-				PlayerSelection++;
-				break;
-				case 40: case 83: case 104:
 				PlayerSelection--;
 				break;
+				case 40: case 83: case 104:
+				PlayerSelection++;
+				break;
+			}
 			}
 			if (PlayerSelection > 3)
 			{
@@ -72,39 +169,31 @@ package
 			}
 			if (PlayerSelection == 1)
 			{
-				unselectAll();
-				theMenu.Selected();
-			}
-			if (PlayerSelection == 2)
-			{
-				unselectAll();
-				secondMenu.Selected();
+				TheCreditsButton.unSelectMe();
+				TheHowToButton.unSelectMe();
+				ThePlayButton.selectMe();
 			}
 			if (PlayerSelection == 3)
 			{
-				unselectAll();
-				thirdMenu.Selected();
+				ThePlayButton.unSelectMe();
+				TheHowToButton.unSelectMe();
+				TheCreditsButton.selectMe();
 			}
+			if (PlayerSelection == 2)
+			{
+				ThePlayButton.unSelectMe();
+				TheHowToButton.selectMe();
+				TheCreditsButton.unSelectMe();
+			}
+		
 		}
 		
-		private function unselectAll():void
+		private function unselectEverything(e:Event):void
 		{
-			theMenu.UnSelect();
-			secondMenu.UnSelect();
-			thirdMenu.UnSelect();
+			TheCreditsButton.unSelectMe();
+			ThePlayButton.unSelectMe();
+			TheHowToButton.unSelectMe();
 		}
-		
-		private function exitMenu(e:Event):void
-		{
-			unselectAll();
-			trace("hihi");
-		}
-		
-		private function unselectEvent(e:Event):void
-		{
-			unselectAll();
-		}
-		
+	
 	}
-
 }

@@ -6,12 +6,12 @@ package
 	 */
 	public class RiverBlockBig extends GameObject
 	{
-		private var circleBlockBig:CircleBlock;
+		//private var circleBlockBig:CircleBlock;
 		
 		public function RiverBlockBig() 
 		{
-			circleBlockBig = new CircleBlock;
-			addChild(circleBlockBig);
+		//	circleBlockBig = new CircleBlock;
+			//addChild(circleBlockBig);
 			
 			collisionType = "Circle";
 			

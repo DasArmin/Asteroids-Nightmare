@@ -8,11 +8,13 @@ package
 	 */
 	public class Particle extends GameObject
 	{
+		private var effect:Bulletfade;
 		
 		public function Particle() 
 		{
-			addChild(new Bush);
-			
+			effect = new Bulletfade;
+			addChild(effect);
+			this.alpha = 0.5;
 			speedDividor = Infinity;
 			moveDirection = Main.fromAngleToPos(Math.random() * 360);
 		}

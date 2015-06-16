@@ -39,16 +39,17 @@ package
 				],
 				[//Throw
 					new Character0_Throw,
-					//new Character90_Throw,
+					new Character90_Throw,
 					new Character180_Throw,
 					new Character270_Throw
 				],
 				[//Swap
+				/*
 					new Character180_Swap,
-					//new Character0_Swap,
+					new Character0_Swap,
 					new Character270_Swap,
 					new Character90_Swap
-					
+				*/
 				]
 			],
 			[//Small
@@ -132,13 +133,11 @@ package
 				bullet.y = y;
 				
 				bullet.moveDirection = Main.fromAngleToPos(Main.fromPosToAngle(new Point(0,0),new Point(moveDirection.x, moveDirection.y)));
-				
+				bullet.scaleX = bullet.scaleY = 2;
 				Main.updateFrame.push(bullet);
 				//Main.colissionObjects.push(bullet);
 				stage.addChild(bullet);
 			}
-			
-			trace(frameCount);
 			
 			if (Main.inputDown["e"] && currentSize == 0) {
 				frameCount = 0;
@@ -149,8 +148,7 @@ package
 			}
 			
 			
-			
-			if (frameCount > 30 && currentSize == 1)
+			if (frameCount > 240 && currentSize == 1)
 			{
 				frameCount = 0;
 				currentSize = 0;
@@ -158,7 +156,7 @@ package
 			}
 			
 			//trace(Main.getFaceDirection(new Point(0, 0), moveDirection));
-			/*
+			
 			if (Main.getFaceDirection(new Point(0, 0), moveDirection) != direction && currentSize == 0 ) {
 				switch (Main.getFaceDirection(new Point(0, 0), moveDirection))
 				{
@@ -187,7 +185,6 @@ package
 						break;
 				}
 			}
-			*/
 			
 			frameCount++
 		}
